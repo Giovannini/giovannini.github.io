@@ -1,0 +1,36 @@
+body {
+  background-color: #1B5A87;
+  color: white;
+  margin: 0;
+  display: block;
+}
+
+section.theoneandonly {
+  
+}
+
+section.theoneandonly h1 {
+  height: 150px;
+  line-height: 150px;
+  color: #ffffff;
+  font-family: 'Open Sans';
+  font-style: italic;
+  text-align: left;
+}
+
+section.theoneandonly em {
+  font-family: 'Open Sans';
+  text-align: center;
+  margin-right: 30px;
+  font-style: italic;
+  font-size: 60px;
+  height: inherit;
+  line-height: inherit;
+  float: left;
+  width: 150px;
+  border-radius: 100px 100px 100px 100px;
+  color: #ffffff;
+  background: #DB5A57;
+  text-shadow: -3px 3px #ca5d28;
+  position: relative;
+}
