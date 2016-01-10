@@ -1,71 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="author" content="Thomas Giovannini">
-        <meta name="keywords" content="giovannini, scala, play, functional programming">
-        <link rel="stylesheet" href="assets/styles/main.min.css" type="text/css">
-        <title>Thomas Giovannini</title>
-    </head>
-    <body>
-      <div class="yoSection">
-        <section class="theoneandonly">
-          <div class="hello">
-            <div class="presentation">
-              <div class="yo">
-                <h1><em>Yo!</em><h1>
-              </div>
-              <h1>I'm Thomas</h1>
-            </div>
-            <h2>I develop stuff</h2>
-          </div>
-          <div class="social">
-            <ul>
-              <li><a href="https://github.com/giovannini">
-                <span class="symbol">circlegithubalt</span>
-              </a></li>
-              <li><a href="http://www.linkedin.com/in/giovanninithomas">
-                <span class="symbol">circlelinkedin</span>
-              </a></li>
-              <li><a href="https://twitter.com/klim4x">
-                <span class="symbol">circletwitterbird</span>
-              </a></li>
-            </ul>
-          </div>
-        </section>
+---
+layout: default
+title: Home
+slug: home
+---
 
-        <section class="articles">
-          <ul>
-            <li><a href="./articles/Mise_en_place_de_less.html">
-              <img src="./assets/images/lesscss.webp" />
-              <span>Mise en place de less</span>
-            <a/></li>
-            <li><a href="#">
-              <img src="./assets/images/img1.jpg" />
-              <span>Article1</span>
-            <a/></li>
-            <li><a href="#">
-              <img src="./assets/images/img4.jpg" />
-              <span>Article2</span>
-            <a/></li>
-            <li><a href="#">
-              <img src="./assets/images/img4.jpg" />
-              <span>Article3</span>
-            <a/></li>
-            <li><a href="#">
-              <img src="./assets/images/img3.jpg" />
-              <span>Article1</span>
-            <a/></li>
-            <li><a href="#">
-              <img src="./assets/images/img2.jpg" />
-              <span>Article2</span>
-            <a/></li>
-            <li><a href="#">
-              <img src="./assets/images/img3.jpg" />
-              <span>Article3</span>
-            <a/></li>
-          </ul>
-        </section>
-      </div>
-    </body>
-</html>
+<div class="post-list">
+  {% for post in paginator.posts %}
+    {% include post.html %}
+  {% endfor %}
+
+  {% include pagination.html %}
+</div>

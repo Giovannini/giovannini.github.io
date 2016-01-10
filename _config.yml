@@ -1,0 +1,29 @@
+# Site settings
+title: Giovannini
+email: giovannini.thomas@gmail.com
+description: Yo, je développe des trucs
+baseurl: ""
+url: "https://giovannini.github.io"
+
+author:
+  name     : 'Thomas Giovannini'
+  email    : giovannini.thomas@gmail.com
+  url      : https://giovannini.github.io
+  linkedin : https://fr.linkedin.com/in/giovanninithomas
+  twitter  : http://twitter.com/klim4x
+  github   : https://github.com/Giovannini
+
+github: https://github.com/Giovannini
+disqus_shortname: "giovannini"
+
+paginate: 2
+comments: true
+paginate_path: "/page/:num"
+
+sass:
+  style: :compressed
+  sass_dir: _sass
+
+# Build settings
+markdown  : kramdown
+permalink : /:title/
