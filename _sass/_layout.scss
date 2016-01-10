@@ -237,10 +237,6 @@
   @extend %clearfix;
   margin-bottom: 15px;
 
-  li:first-child {
-    margin-right: 5px;
-  }
-
   ul {
     margin: 0;
     padding: 0;
@@ -278,8 +274,12 @@
     -moz-transition: all .2s ease-in;
   }
 
-  a:hover i.fa-facebook {
-    background-color: #3A5897;
+  a:hover i.fa-linkedin {
+    background-color: #0077B5;
+    color: #fff;
+  }
+  a:hover i.fa-github {
+    background-color: #111111;
     color: #fff;
   }
   a:hover i.fa-twitter {

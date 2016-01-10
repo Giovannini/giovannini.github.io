@@ -6,12 +6,11 @@ categories: 'CSS, Front'
 comments: true
 ---
 
-# Mise en place de less
 Less est une extension au langage CSS qui permet d'y ajouter des fonctionnalités permettant d'écrire du CSS plus maintenable, par exemple via l'utilisation de variables, de mixins ou encore de fonctions.
 
 Il existe des librairies tiers qui permettent de compiler du code Less en code CSS pour qu'il soit utilisable dans tous les navigateurs. Ma curiosité (couplée à l'envie de faire quelque chose de pas trop pourri pour ce site) m'a pousée à essayer de mettre en place un environnement qui me permettrait d'écrire du code un peu compréhensible et que je pourrais faire évoluer ensuite.
 
-Le but de cet article est de décrire les outils ainsi que l'architecture que j'ai mis en place pour écrire du CSS sereinement sur ce site. Je ne vous montrerais pas de code less parce la manière dont monsieur Giovannini écrit du CSS/Less n'est pas à ce jour recommandable et que ce n'est donc clairement pas le plus intéressant ici.
+Le but de cet article est de décrire les outils ainsi que l'architecture que j'ai mis en place pour écrire du CSS sereinement.
 
 ## Installation et utilisation
 Tout d'abord, j'ai installé le compilateur [less](http://lesscss.org/#using-less) qui permet de transcrire du code Less en CSS tout simple. J'ai voulu faire les choses propres, j'ai écrit un petit package.json pour le montrer:
@@ -20,10 +19,10 @@ Tout d'abord, j'ai installé le compilateur [less](http://lesscss.org/#using-les
 
 Du coup après ça je run un joli petit `npm install` et je peux utiliser le compilateur. D'utilisation c'est tout bête, il suffit de lancer la commande `lessc` suivie du fichier less à compiler. Si on ne précise rien, ça va juste l'écrire dans la console, mais on peut rediriger la sortie standard vers le fichier de notre choix en ajoutant un second nom de fichier à la suite de notre commande.
 
-On se retrouve avec un joli `lessc style.less style.css` comme ils font dans le Getting Started dans le site de less. Jusque là du coup, je n'ai pas été très utile. Je ne le serais pas non plus en vous parlant du plugin           `clean-css` qui permet de compiler en minifié notre fichier .less donc je passe.
+On se retrouve avec un joli `lessc style.less style.css` comme ils font dans le Getting Started dans le site de less.
 
 ## Une architecture pour organiser un peu le tout
- des avantages de less est qu'il aide à améliorer l'organisation des feuilles de style et même le style qu'on écrit à l'intérieur de ces feuilles. Une bonne organisation via une architecture de fichiers propre, ça aide à s'y retrouver dans tout           ce qu'on peut écrire et donc clairement nous faciliter la vie dans le futur. C'est donc ce qu'on vise. Des architectures il y en a plein de possible. Chacune a ses pour et ses contres, moi je vais utiliser celle qui suit:
+ Un des avantages de less est qu'il aide à améliorer l'organisation des feuilles de style et même le style qu'on écrit à l'intérieur de ces feuilles. Une bonne organisation via une architecture de fichiers propre, ça aide à s'y retrouver dans tout           ce qu'on peut écrire et donc clairement nous faciliter la vie dans le futur. C'est donc ce qu'on vise. Des architectures il y en a plein de possible. Chacune a ses pour et ses contres, moi je vais utiliser celle qui suit:
 - base/ : contient les styles globaux comme les couleurs, les polices, etc.
 - components/ : contient chaque composant séparément, dans son propre fichier .less
 - layout/ : contient les styles des composants layout comme les header, footers ou encore les nav.
@@ -49,7 +48,9 @@ Reprenons ces lignes tranquillement:
 - `watch-less`: permet d'utiliser le nouvel outil que nous venons d'installer. Il s'utilise de manière très simple: on appelle la commande           `watch`, on précise la commande que l'on veut lancer lorsqu'un changement a lieu, puis le dossier à partir duquel on veut que les changements soient observés.
 - `build`: est un raccourci pour le script           _build-less_ écrit précédemment.
 - `watch`: est un raccourci pour le script           _watch-less_ écrit précédemment.
-- `start`: est un raccourci qui permet de lancer le watch sur nos fichiers less. Grâce à cette logique, nous allons pouvoir démarrer notre watch en lançant npm start et ainsi commencer à écrire nos fichiers less et voir via un simple rechargement           de page les changements efectués. J'ai ajouté raccourcis de scripts qui semblent inutiles ici, qui le sont en effet pour le moment, mais qui pourront s'avérer utile lorsque vous aurez besoin d'utiliser un watcher sur vos fichiers js par exemple           (par exemple dans le but de les transpiler automatiquement de ES6 vers ES5). Il sera allors simple de modifier le script actuel watch en quelque chose comme           `npm run watch-less &amp; npm run watch-js`.
+- `start`: est un raccourci qui permet de lancer le watch sur nos fichiers less
+
+Grâce à cette logique, nous allons pouvoir démarrer notre watch en lançant npm start et ainsi commencer à écrire nos fichiers less et voir via un simple rechargement           de page les changements efectués. J'ai ajouté raccourcis de scripts qui semblent inutiles ici, qui le sont en effet pour le moment, mais qui pourront s'avérer utile lorsque vous aurez besoin d'utiliser un watcher sur vos fichiers js par exemple           (par exemple dans le but de les transpiler automatiquement de ES6 vers ES5). Il sera allors simple de modifier le script actuel watch en quelque chose comme           `npm run watch-less & npm run watch-js`.
 
 ## Pour conclure
 Nous avons effectué un travail qui nous permet d'utiliser du less comme nous utilisons du CSS à l'utilisation, puisqu'il suffit d'un rechargement de page pour que le changement ait lieu, en se passant de répéter l'étape oh combien barbante de           recompiler via la console notre code less. Il pourrait être intéressant d'aller encore plus loin et de faire recharger notre page toute seule lorsque nous effectuons un changement dans notre code, pour ainsi économiser cet appui de touche si           coûteux qu'est le F5. Des outils existent pour cela, mais je trouve que tu pousses ta flemme un peu trop loin et je n'en parlerais donc pas ici.
