@@ -196,6 +196,10 @@
     max-width: 100%;
     vertical-align: middle;
   }
+
+  .post-content {
+    text-align: justify;
+  }
 }
 
 .single {
@@ -227,6 +231,7 @@
 
     .post-content {
       margin-top: .8em;
+      text-align: justify;
     }
   }
 }
