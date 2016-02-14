@@ -14,9 +14,9 @@ author:
   github   : https://github.com/Giovannini
 
 github: https://github.com/Giovannini
-disqus_shortname: "thomasgiovannini"
+disqus_shortname: "giovannini"
 
-paginate: 2
+paginate: 5
 comments: true
 paginate_path: "/page/:num"
 
