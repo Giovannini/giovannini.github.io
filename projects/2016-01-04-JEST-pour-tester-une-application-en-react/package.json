@@ -1,0 +1,42 @@
+{
+  "name": "jest",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel": "^5.6.14",
+    "babel-core": "^5.0.12",
+    "babelify": "^6.4.0",
+    "browserify": "^13.0.0",
+    "jest-cli": "latest",
+    "react-addons-test-utils": "latest",
+    "rimraf": "^2.5.2",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.6.0"
+  },
+  "scripts": {
+    "start": "npm run watch-js",
+    "build": "npm run clean && npm run build-js",
+    "test": "jest",
+    "~test": "npm test -- --watch",
+
+    "clean": "rimraf ../webapp/public",
+
+    "build-js": "browserify javascripts/app.js -o ./app.js -t babelify -g uglifyify",
+
+    "watch-js": "watchify javascripts/app.js -o ./app.js -dv -t babelify"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/javascripts/tools/jestPreprocessor",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  }
+}
