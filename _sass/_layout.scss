@@ -183,7 +183,7 @@
   }
 
   .post-meta {
-    font-size: 14px;
+    font-size: 17px;
     margin-top: 0;
     font-weight: 300;
     font-family: $font-family-serif;
@@ -344,6 +344,16 @@
       }
     }
 
+  }
+}
+
+.tips {
+  background-color: $gray-color-light;
+  padding: 25px;
+
+  code {
+    background-color: $gray-color-dark;
+    color: $background-color;
   }
 }
 

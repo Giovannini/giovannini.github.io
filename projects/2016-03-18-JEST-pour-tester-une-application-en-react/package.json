@@ -28,7 +28,15 @@
     "watch-js": "watchify javascripts/app.js -o ./app.js -dv -t babelify"
   },
   "jest": {
+    "//": [
+      "Puisque nous allons écrire du code utilisant JSX, nous auront besoin",
+      "d'un préprocesseur pour JEST."
+    ],
     "scriptPreprocessor": "<rootDir>/javascripts/tools/jestPreprocessor",
+    "//": [
+      "Par défaut, JEST mock toutes les dépendances du projet, mais celles-ci",
+      "ne doivent pas l'être si on veut pouvoir utiliser leur fonctionnalités."
+    ],
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",

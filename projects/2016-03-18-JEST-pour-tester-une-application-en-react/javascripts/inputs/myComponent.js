@@ -4,11 +4,17 @@ export default React.createClass({
   propTypes: {
     label: React.PropTypes.string,
     value: React.PropTypes.string,
-    handleChange: React.PropTypes.func
+    onClick: React.PropTypes.func
+  },
+
+  getDefaultProps() {
+    return {
+      onClick: () => {}
+    };
   },
 
   render() {
-    const { label, value, handleChange } = this.props;
+    const { label, ...props } = this.props;
 
     return (
       <div className="form-elm">
@@ -18,9 +24,9 @@ export default React.createClass({
 
         <p className="data">
           <input
-            className="sexy"
-            value={ value }
-            onChange={ handleChange }
+            type="checkbox"
+            className="sexy-input"
+            { ...props }
           />
         </p>
       </div>
