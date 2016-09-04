@@ -38,24 +38,13 @@
 //
 // Site header
 .header {
-  background: #292929 url(../images/cover.jpg) no-repeat 50% 0px;
+  background: $primary-color;
   @include background-size(cover);
-  border-bottom: 1px solid $gray-color-light;
-  border-top: 3px solid $primary-color;
   min-height: 60px;
   position: relative;
   @extend %clearfix;
   padding: 60px 0;
   margin-bottom: 30px;
-
-  .overlay {
-    background: rgba(#000, .75);
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-  }
 
   a {
     color: $white-color;
@@ -70,10 +59,6 @@
     margin-top: 160px;
     font-weight: 300;
   }
-}
-
-.home .header {
-  padding: 100px 0 200px;
 }
 
 //
