@@ -1,9 +1,5 @@
 <header class="header">
 
-  <div class="overlay">
-
-    <div class="container">
-
       <h1 class="title">
         <a href="{{ site.baseurl }}/">{{ site.title }}</a>
       </h1>
@@ -21,11 +17,8 @@
             <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
             {% endif %}
           {% endfor %}
-          <li><a href="{{ site.github }}" target="_blank" rel="noopener noreferrer">Github</a></li>
+          <li><a href="{{ site.author.github }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a></li>
         </ul>
       </nav>
-    </div>
-
-  </div>
 
 </header>

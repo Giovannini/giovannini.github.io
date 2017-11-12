@@ -39,6 +39,11 @@
 
   code {
     background-color: transparent;
+
+    .lineno {
+      width: 20px;
+      display: inline-block;
+    }
   }
 
   .c { color: #75715e } /* Comment */

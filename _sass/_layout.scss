@@ -43,8 +43,9 @@
   min-height: 60px;
   position: relative;
   @extend %clearfix;
-  padding: 60px 0;
+  padding: 30px $spacing-unit;
   margin-bottom: 30px;
+  border-bottom: 3px solid $secondary-dark-color;
 
   a {
     color: $white-color;
@@ -126,14 +127,19 @@
     padding: 0;
     display: inline-block;
     text-decoration: none;
-    color: darken($white-color, 25%);
+    color: darken($primary-color, 25%);
     @include transition(color .2s linear);
+
+    .fa {
+      font-size: $font-size-base * 2;
+    }
+
   }
 
   li.active a,
   li:hover a,
   li:focus a {
-    color: lighten($primary-color, 10%);
+    color: lighten($primary-color, 25%);
     text-decoration: none;
   }
 }
@@ -197,8 +203,19 @@
   @extend %clearfix;
   text-align: right;
 
+  @media only screen and (min-width : $on-laptop) {
+    position: fixed;
+    bottom: 50%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+  }
+
   span, a {
-    font-size: 1em;
+    font-size: 1.5em;
     color: #999;
   }
 }
