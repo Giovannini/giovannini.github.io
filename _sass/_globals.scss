@@ -163,10 +163,13 @@ code {
   border: 1px solid $gray-color-light;
   border-radius: 3px;
   background-color: #eef;
+  @include media-query($on-phone) {
+    font-size: 14px;
+  }
 }
 
 code {
-  padding: 1px 5px;
+  padding: 2px;
 }
 
 pre {

@@ -23,8 +23,6 @@ Pour manipuler les streams avec Akka streams, on se retrouve à manipuler essent
 
 ### Sources
 
-A Source is a data creator, it serves as an input source to the stream. Each Source has a single output channel and no input channel. All the data flows through the output channel to whatever is connected to the Source.
-
 Une [`Source`](https://doc.akka.io/api/akka/current/akka/stream/scaladsl/Source.html) est une étape du traitement d'où provient la donnée, elle sert de point d'entrée au stream. Ainsi, chaque `Source` possède exactement un canal de sortie et pas de canal d'entrée. Toute la donnée transite depuis ce canal de sortie jusqu'à ce qui est connecté à cette source. Akka Streams assure qu’elle n’emettra un nouvel élément que lorsque les étapes de traitement suivantes sont prêtes à le recevoir.
 
 Elles sont définies de cette façon:
