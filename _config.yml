@@ -3,6 +3,8 @@ title: Giovannini
 email: giovannini.thomas@gmail.com
 description: Yo, je développe des trucs
 baseurl: ""
+articles:
+  - baseurl: /article/
 url: "https://giovannini.github.io"
 
 author:
@@ -20,13 +22,20 @@ paginate: 5
 comments: true
 paginate_path: "/page/:num"
 
+plugins:
+  - jekyll-paginate
+  - jekyll-gist
+
+whitelist:
+  - jekyll-gist
+
 sass:
   style: :compressed
   sass_dir: _sass
 
 # Build settings
 markdown  : kramdown
-permalink : /:title/
+permalink : /article/:title
 
 defaults:
   - scope:
