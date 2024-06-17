@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr">
+    <title>Notes de Thomas</title>
+    <subtitle>Mes idées et mes notes</subtitle>
+    <link href="//giovannini.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="//giovannini.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-06-17T00:00:00+00:00</updated>
+    <id>//giovannini.github.io/atom.xml</id>
+    <entry xml:lang="fr">
+        <title>Staff Engineer</title>
+        <published>2024-06-17T00:00:00+00:00</published>
+        <updated>2024-06-17T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="//giovannini.github.io/notes/staff-engineer/" type="text/html"/>
+        <id>//giovannini.github.io/notes/staff-engineer/</id>
+        
+        <content type="html">&lt;ul&gt;
+&lt;li&gt;Il s&#x27;agit d&#x27;un rôle de direction. Si le Senior est objectivé sur sa contribution au code, le Staff l&#x27;est sur son impact à aider les équipes à faire leur travail.&lt;&#x2F;li&gt;
+&lt;li&gt;Les différences en &amp;quot;hard skill&amp;quot; (langages de programmation, design patterns, librairies, outils, ...) ne sont bien moins grandes entre un ingénieur Senior et un Staff qu&#x27;entre un Junior et un Senior.
+C&#x27;est notamment du au fait qu&#x27;un Staff Engineer a d&#x27;autres responsabilités et moins de temps pour acquérir de nouvelles compétences.&lt;&#x2F;li&gt;
+&lt;li&gt;Son rôle est vague par définition. On attend de lui entre autre qu&#x27;il apporte de la clarté, qu&#x27;il développe une stratégie, qu&#x27;il s&#x27;occupe des entretiens, des onboardings, du mentorat et du coaching, qu&#x27;il soit force de conseil pour les directions d&#x27;ingénierie et qu&#x27;il puisse résoudre des problèmes qui s&#x27;étendent sur plusieurs équipes.&lt;&#x2F;li&gt;
+&lt;li&gt;Il travaille sur des horizons de temps plus long: un junior fait sa tâche de sprint en une journée, un senior prend entre un mois et un trimestre et un staff entre un et trois ans.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Quelques articles intéressants sur le sujet:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.alexewerlof.com&#x2F;p&#x2F;senior-engineer-to-staff-engineer&quot;&gt;Senior to Staff Engineer&lt;&#x2F;a&gt; par &lt;a href=&quot;https:&#x2F;&#x2F;substack.com&#x2F;@alexewerlof&quot;&gt;Alex EWERLÖF&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>À propos</title>
+        <published>2024-06-16T00:00:00+00:00</published>
+        <updated>2024-06-16T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="//giovannini.github.io/about/" type="text/html"/>
+        <id>//giovannini.github.io/about/</id>
+        
+        <content type="html">&lt;p&gt;Je m&#x27;appelle Thomas, je travaille en tant que développeur, ingénieur et architecte pour transformer des idées en produits techniques et en plateformes innovantes. J&#x27;adore utiliser mes connaissances nouvelles pour créer des outils qui simplifient la vie des gens.&lt;&#x2F;p&gt;
+&lt;p&gt;Dans ce site, je posterais des idées que j&#x27;ai ou des notes que j&#x27;ai pris sur les sujets qui m&#x27;intéressent.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Les booléens</title>
+        <published>2019-04-13T00:00:00+00:00</published>
+        <updated>2019-04-13T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="//giovannini.github.io/notes/booleens/" type="text/html"/>
+        <id>//giovannini.github.io/notes/booleens/</id>
+        
+        <content type="html">&lt;p&gt;Les booléens sont un type de donnée que l&#x27;on retrouve dans tout projet informatique. Ils sont utilisés pour exprimer des conditions logiques, parfois notamment relativement à des itérations.&lt;&#x2F;p&gt;
+&lt;p&gt;Malgré leur fréquence, je suis étonné de revoir les mêmes questions et les mêmes problèmes relatifs à la logique qu&#x27;ils génèrent. Comment combiner des booléens pour assurer que la condition logique que je souhaite est correcte, comment éviter de me répéter avec des booléens ? Quels sont les pratiques recommandées lors de l&#x27;utilisations de booléens. Voici ce que je vais décrire dans cet article.&lt;&#x2F;p&gt;
+&lt;p&gt;Les booléens sont généralement intégrés nativement dans le langage de programmation que l&#x27;on utilise. Je vais supposer que vous utilisez un langage qui permet d&#x27;appliquer des opérations basiques sur un booléen (ET, NON, OU ainsi que les opérations d&#x27;égalité), et vais utiliser Typescript comme langage pour coder, même si ces principes sont applicables à presque tout langage.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;l-algebre-de-boole&quot;&gt;L&#x27;algèbre de Boole&lt;&#x2F;h1&gt;
+&lt;p&gt;Le type de données Booléen est nommé d&#x27;après &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;George_Boole&quot;&gt;Georges Boole&lt;&#x2F;a&gt;, qui a été le premier à définir un système de logique algébrique au XIXe siècle.&lt;&#x2F;p&gt;
+&lt;p&gt;Dans un langage de programmation, une variable de type booléenne peut avoir 2 valeurs différentes: &lt;code&gt;true&lt;&#x2F;code&gt; et &lt;code&gt;false&lt;&#x2F;code&gt; (ou 1 et 0).&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;operations-basiques&quot;&gt;Opérations basiques&lt;&#x2F;h2&gt;
+&lt;p&gt;L&#x27;algèbre de Boole définie 3 opérations majeures applicables aux booléens.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;L&#x27;opération ET&lt;&#x2F;strong&gt; (AND) permet de conjuguer deux booléens. Pour deux booléens A et B, l&#x27;opération ET satisfait &lt;code&gt;A ET B vaut true&lt;&#x2F;code&gt; si &lt;code&gt;A vaut true&lt;&#x2F;code&gt; et &lt;code&gt;B vaut true&lt;&#x2F;code&gt; et satisfait &lt;code&gt;A ET B vaut false&lt;&#x2F;code&gt; dans les autres cas.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;L&#x27;opération OU&lt;&#x2F;strong&gt; (OR) permet de disjoindre deux booléens. Pour deux booléens A et B, l&#x27;opération OU satisfait &lt;code&gt;A OU B vaut true&lt;&#x2F;code&gt; si &lt;code&gt;A vaut true&lt;&#x2F;code&gt; ou &lt;code&gt;B vaut true&lt;&#x2F;code&gt; et satisfait &lt;code&gt;A OU B vaut false&lt;&#x2F;code&gt; dans les autres cas.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;L&#x27;opération NON&lt;&#x2F;strong&gt; (NOT) est une opération de négation et permet d&#x27;obtenir la valeur opposée d&#x27;un booléen. Pour un booléen A, l&#x27;opération NON satisfait &lt;code&gt;NON A vaut true&lt;&#x2F;code&gt; si &lt;code&gt;A vaut false&lt;&#x2F;code&gt; et satisfait &lt;code&gt;NON A vaut false&lt;&#x2F;code&gt; si &lt;code&gt;A vaut true&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Plutôt que de longues phrases, on résume les opérations possibles sur des booléens dans des tables qu&#x27;on appelle &lt;strong&gt;table de vérité&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;A&lt;&#x2F;th&gt;&lt;th&gt;B&lt;&#x2F;th&gt;&lt;th&gt;A ET B&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;Dans les premières colonnes, on trouve les variables que l&#x27;on considère et leur valeur (0 et 1 plutôt que false et true puisque c&#x27;est plus rapide à écrire). Dans les dernières colonnes les résultats aux opérations que l&#x27;on souhaite effectuer.&lt;&#x2F;p&gt;
+&lt;p&gt;Dans cette table, 0 ET 1 vaut 0, car comme décrit au dessus&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;l&#x27;opération ET satisfait &lt;code&gt;A ET B vaut true&lt;&#x2F;code&gt; si &lt;code&gt;A vaut true&lt;&#x2F;code&gt; et &lt;code&gt;B vaut true&lt;&#x2F;code&gt; et satisfait &lt;code&gt;A ET B vaut false&lt;&#x2F;code&gt; dans les autres cas&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Ici, faux et vrai vaut donc bien faux.&lt;&#x2F;p&gt;
+&lt;p&gt;Les tables de vérité des deux autres opérations sont les suivantes:&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;A&lt;&#x2F;th&gt;&lt;th&gt;B&lt;&#x2F;th&gt;&lt;th&gt;A OU B&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;A&lt;&#x2F;th&gt;&lt;th&gt;NON A&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;Dans les langages de programmation, ces opérations se définissent généralement avec les fonctions &lt;code&gt;&amp;amp;&amp;amp;&lt;&#x2F;code&gt;, &lt;code&gt;||&lt;&#x2F;code&gt; et &lt;code&gt;!&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;and &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;or &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;not &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;combinaisons-d-operations-basiques&quot;&gt;Combinaisons d&#x27;opérations basiques&lt;&#x2F;h2&gt;
+&lt;p&gt;En combinant des opérations basiques, il est possible d&#x27;arriver à des opérations courantes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;L&#x27;implication.&lt;&#x2F;strong&gt; Dans l&#x27;opération A implique B, si A est vrai, alors la valeur de B est prise. Si A est faux, alors la valeur de B peut être ignorée; puisqu&#x27;on retourne forcément une valeur booléenne, l&#x27;opération est vraie lorsque A est faux.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;imply &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;La différence.&lt;&#x2F;strong&gt; Cette opération est aussi appelée XOR, ou OU exclusif. Elle est vraie lorsque deux variables sont différentes.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;xor &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;L&#x27;égalité, ou équivalence.&lt;&#x2F;strong&gt; L&#x27;opération est vraie lorsque les deux variables ont la même valeur.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;equivalence &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;xor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; OR
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;equivalence &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;!&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Il est aussi possible de créer des tables de vérité pour ces différentes propositions.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;utilisation-des-tables-de-verite&quot;&gt;Utilisation des tables de vérité&lt;&#x2F;h2&gt;
+&lt;p&gt;Les tables de vérité sont très utiles pour se rendre compte de l&#x27;opération que l&#x27;on souhaite utiliser, mais aussi des équivalences logiques.&lt;&#x2F;p&gt;
+&lt;p&gt;Prenons la table suivante:&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;A&lt;&#x2F;th&gt;&lt;th&gt;B&lt;&#x2F;th&gt;&lt;th&gt;Result&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;Une des manière les plus simples de savoir de quelle proposition nous avons besoin est de traiter toutes les lignes qui résultent en 1 comme des opérations ET et les associer via l&#x27;opération OU.&lt;&#x2F;p&gt;
+&lt;p&gt;Nous considérons ici les lignes 2 et 3.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fafafa;color:#383a42;&quot;&gt;&lt;code&gt;&lt;span&gt;Result vaut
+&lt;&#x2F;span&gt;&lt;span&gt;  (A est faux ET B est vrai) OU
+&lt;&#x2F;span&gt;&lt;span&gt;  (A est vrai ET B est faux)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ou en algèbre de Boole&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fafafa;color:#383a42;&quot;&gt;&lt;code&gt;&lt;span&gt;Result vaut (NON A ET B) OU (A ET NON B)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;La porte logique est celle du OU exclusif et nous retombons bien sur notre définition précédente.&lt;&#x2F;p&gt;
+&lt;p&gt;Evidemment, si toutes les lignes ont le même résultat, c&#x27;est que l&#x27;on n&#x27;a pas besoin de condition: la valeur est la même indépendamment des variables que l&#x27;on fait rentrer dans la table.&lt;&#x2F;p&gt;
+&lt;p&gt;Pour des tables avec plus de la moitié des lignes valant 1, il est possible de se simplifier le travail.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;A&lt;&#x2F;th&gt;&lt;th&gt;B&lt;&#x2F;th&gt;&lt;th&gt;Result&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;pre style=&quot;background-color:#fafafa;color:#383a42;&quot;&gt;&lt;code&gt;&lt;span&gt;Result vaut
+&lt;&#x2F;span&gt;&lt;span&gt;  (NON A ET NON B) OU
+&lt;&#x2F;span&gt;&lt;span&gt;  (NON A ET B) OU
+&lt;&#x2F;span&gt;&lt;span&gt;  (A ET NON B)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;On peut considérer les points communs entre les lignes. Par exemple, dans tous les cas où A vaut 0, le Result vaut 1. En associant ce constat avec la dernière ligne, il est possible de simplifier notre expression&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fafafa;color:#383a42;&quot;&gt;&lt;code&gt;&lt;span&gt;Result vaut (NON A) OU (A ET NON B)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Une dernière façon (pour cet article en tout cas) de lire ces tables, et qui est surtout utile lorsque plus de la moitié des lignes du résultat sont des 1 est d&#x27;en inverser le résultat.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;A&lt;&#x2F;th&gt;&lt;th&gt;B&lt;&#x2F;th&gt;&lt;th&gt;Result&lt;&#x2F;th&gt;&lt;th&gt;NON Result&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;td&gt;1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;Il est donc possible d&#x27;écrire la proposition sous une autre forme.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#fafafa;color:#383a42;&quot;&gt;&lt;code&gt;&lt;span&gt;NON Result vaut A ET B
+&lt;&#x2F;span&gt;&lt;span&gt;Result vaut NON(A ET B)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Lorsque ces tables ne considèrent qu&#x27;une seule variable, deux lignes sont nécessaires. Lorsqu&#x27;elle en considère 2, 4 lignes sont nécessaires. 8 lignes sont nécessaires pour 3 variables. Il faut 2^n lignes pour n variables. Ce nombre grossit exponentiellement, et c&#x27;est pourquoi il est nécessaire de modérer le nombre de propositions que l&#x27;on souhaite traiter en même temps. Je ne recommande pas d&#x27;utiliser cette méthode pour plus de 3 variables.&lt;&#x2F;p&gt;
+&lt;p&gt;Concrètement, il est possible en partant d&#x27;une table de vérité, de trouver la liaison logique nécessaire entre plusieurs variables mais aussi les équivalences logiques.&lt;&#x2F;p&gt;
+&lt;p&gt;Par exemple, il est possible grâce aux tables de vérité de démonter que l&#x27;implication&lt;&#x2F;p&gt;
+&lt;p&gt;Beaucoup d&#x27;autres méthodes existent, il s&#x27;agit de celle avec laquelle j&#x27;ai le plus d&#x27;affinité. Il existe plusieurs motifs que l&#x27;on peut notamment retrouver dans une table de vérité et je vais tenter de vous les montrer&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;du-code&quot;&gt;Du code&lt;&#x2F;h1&gt;
+&lt;p&gt;Grâce à ces principes génériques sur l&#x27;algèbre de Boole, il nous est possible de mettre en place plus facilement nos conditions logiques au sein de notre application, mais aussi de les combiner.&lt;&#x2F;p&gt;
+&lt;p&gt;&amp;quot;Je souhaite afficher mon bouton de promotion quand mon utilisateur est connecté &lt;strong&gt;et&lt;&#x2F;strong&gt; que nous sommes le jour de Noël.&amp;quot;&lt;&#x2F;p&gt;
+&lt;p&gt;La spécification métier nous permet de savoir rapidement quelle opération logique utiliser.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;shouldDisplayButton &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isUserConnected&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isTodayChristmas&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean
+&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isUserConnected &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isTodayChristmas
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&amp;quot;On peut commander une salade &lt;strong&gt;ou&lt;&#x2F;strong&gt; un sandwich dans ce menu.&amp;quot;&lt;&#x2F;p&gt;
+&lt;p&gt;Ici, la spécification porte à confusion, puisque cette phrase porte plutôt la sémantique d&#x27;un ou exclusif. Pour la reformuler logiquement:&lt;&#x2F;p&gt;
+&lt;p&gt;&amp;quot;Dans ce menu, on peut prendre soit une salade, soit un sandwich.&amp;quot;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;isValidMenu &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;hasASalad&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;hasASandwich&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean
+&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; xor(hasASalad, hasASandwich)
+&lt;&#x2F;span&gt;&lt;span&gt;  (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;hasASalad &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;hasASandwich&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;hasASandwich &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;hasASalad&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;les-bonnes-pratiques&quot;&gt;Les bonnes pratiques&lt;&#x2F;h2&gt;
+&lt;p&gt;On retrouve de nombreuses bonnes pratiques associées aux booléens, en voici certaines qui sont bien entendu des propositions et non des vérités absolues.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;conventions-de-nommage&quot;&gt;Conventions de nommage&lt;&#x2F;h3&gt;
+&lt;p&gt;Il est recommandé de toujours nommer ses booléens avec les assertions &amp;quot;est&amp;quot; ou &amp;quot;a&amp;quot;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isUserConnected&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;hasASandwich&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;areDisplayed&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; ...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;separer-les-operations-complexes-par-des-parentheses&quot;&gt;Séparer les opérations complexes par des parenthèses&lt;&#x2F;h3&gt;
+&lt;p&gt;Les opérations entre booléen, comme pour les entiers, suivent des ordre de priorité. De même que la multiplication est prioritaire sur l&#x27;addition, l&#x27;opération ET est généralement prioritaire sur l&#x27;opération OU. Mettre des parenthèses entre différentes opérations permet de simplifier la lecture et la compréhension de la logique de l&#x27;opération.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Bad
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;xor &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Good
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;xor &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;amp;&amp;amp; !&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;eviter-de-passer-un-booleen-en-parametre-d-une-fonction&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;labs42io&#x2F;clean-code-typescript#dont-use-flags-as-function-parameters&quot;&gt;Eviter de passer un booléen en paramètre d&#x27;une fonction&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;Passer un booléen en fonction indique que la fonction fait plusieurs choses à la fois. Mieux vaut découper cette fonction en deux fonctions distinctes que de passer un argument drapeau (flag argument)&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Bad
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;createFile&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;string, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;temp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;temp&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;fs&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;create&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#50a14f;&quot;&gt;`.&#x2F;temp&#x2F;${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#50a14f;&quot;&gt;}`&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;fs&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;create&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Good
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;createTempFile&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;string) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;createFile&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#50a14f;&quot;&gt;`.&#x2F;temp&#x2F;${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#50a14f;&quot;&gt;}`&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;createFile&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;string) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;fs&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;create&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;eviter-les-noms-negatifs&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;labs42io&#x2F;clean-code-typescript#avoid-negative-conditionals&quot;&gt;Eviter les noms négatifs&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;Les doubles négatifs sont plus complexes à comprendre que les positifs. Les noms de booléens négatifs entraînent ainsi une charge mentale supplémentaire: les noms positifs sont à préférer.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Bad
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isEmailNotUsed&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; ...
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;isEmailNotUsed&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;email&lt;&#x2F;span&gt;&lt;span&gt;)) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; ...
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Good
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isEmailUsed&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; ...
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;!&lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;isEmailUsed&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;node&lt;&#x2F;span&gt;&lt;span&gt;)) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; ...
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;tautologie&quot;&gt;Tautologie&lt;&#x2F;h3&gt;
+&lt;p&gt;Une tautologie est une façon d&#x27;exprimer deux fois la même chose de façon différente. Ses formes les plus courantes dans du code sont les suivantes:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-typescript &quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Bad
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isEmailEmpty&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;email&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isEmpty &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;true &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isFieldDefined&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;field &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;undefined &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;false &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;true
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Good
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isEmailEmpty&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;email&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isEmpty
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;isFieldDefined&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;boolean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;field &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;!== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;undefined
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Les transformeurs de monades</title>
+        <published>2016-10-09T00:00:00+00:00</published>
+        <updated>2016-10-09T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="//giovannini.github.io/notes/les-monads-transformers/" type="text/html"/>
+        <id>//giovannini.github.io/notes/les-monads-transformers/</id>
+        
+        <content type="html">&lt;p&gt;Les transformeurs de monades (monad transformers en anglais) sont des objets provenant de la programmation fonctionnelle.
+Il s&#x27;agit de types monadiques dont le but est d&#x27;abstraire une monade enveloppant une seconde monade.
+Nous allons voir qu&#x27;il s&#x27;agit d&#x27;un motif que nous retrouvons assez souvent dans notre code Scala et en quoi les transformeurs de monades sont une abstraction très pratique pour ce genre de cas.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;les-cas-d-utilisation&quot;&gt;Les cas d&#x27;utilisation&lt;&#x2F;h2&gt;
+&lt;p&gt;Je viens de créer une superbe base de données qui va me permettre de gérer ma todolist d&#x27;une manière révolutionnaire.
+J&#x27;ai plusieurs méthodes sur cette base, notamment &lt;code&gt;def get(id: Long): Future[Option[Task]]&lt;&#x2F;code&gt; qui me permet de récupérer une tâche de ma todolist via son ID.
+Ici, j&#x27;utilise le type &lt;code&gt;Future&lt;&#x2F;code&gt; parce que je souhaite effectuer des transactions asynchrones avec ma base.
+De plus, j&#x27;utilise le type &lt;code&gt;Option&lt;&#x2F;code&gt; puisqu&#x27;en réalité, je ne sais pas si à l&#x27;ID que je donne en paramètre correspond vraiment une tâche.
+Top.
+Donc maintenant, je peux sereinement récupérer mes tâches une par une.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scala&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-scala &quot;&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;getTaskInfo&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Long&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a0a1a7;&quot;&gt;&#x2F;&#x2F; Récupération de ma tâche et opération sur le contenu du Future
+&lt;&#x2F;span&gt;&lt;span&gt;  todolistDAO.get(id).map {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span&gt;None &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; println(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#50a14f;&quot;&gt;&amp;quot;Pas de tâche&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span&gt;Some(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;task&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; println(task)
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Mais ma todolist est révolutionnaire et elle peut faire bien plus que ça.
+En vrai, j&#x27;ai aussi une autre méthode &lt;code&gt;def sumTwoTasksDurations(id1: Long, id2: Long)&lt;&#x2F;code&gt;.
+Je vais devoir faire deux appels à ma méthode &lt;code&gt;get&lt;&#x2F;code&gt;, j&#x27;aurais deux &lt;code&gt;Future&lt;&#x2F;code&gt;s.
+Comme ils ont une structure monadique, je vais pouvoir utiliser une for comprehension:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scala&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-scala &quot;&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;sumTwoTasksDurations&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;id1&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Long&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;id2&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Long&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= for &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;maybeTask1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;lt;-&lt;&#x2F;span&gt;&lt;span&gt; todolistDAO.get(id1)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;maybeTask2 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;lt;-&lt;&#x2F;span&gt;&lt;span&gt; todolistDAO.get(id2)
+&lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;yield &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  ...
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dans mon &lt;code&gt;yield&lt;&#x2F;code&gt;, je vais devoir traiter deux &lt;code&gt;Option&lt;&#x2F;code&gt;s:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Si elles sont toutes les deux à &lt;code&gt;Some&lt;&#x2F;code&gt;, je les affiche&lt;&#x2F;li&gt;
+&lt;li&gt;Sinon, je n&#x27;affiche rien&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Comme &lt;code&gt;Option&lt;&#x2F;code&gt; possède aussi une structure monadique, je peux aussi utiliser une for comprehension:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scala&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-scala &quot;&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;sumTwoTasksDurations&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;id1&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Long&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;id2&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Long&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= for &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;maybeTask1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;lt;-&lt;&#x2F;span&gt;&lt;span&gt; todolistDAO.get(id1)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;maybeTask2 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;lt;-&lt;&#x2F;span&gt;&lt;span&gt; todolistDAO.get(id2)
+&lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;yield &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;task1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;lt;-&lt;&#x2F;span&gt;&lt;span&gt; maybeTask1
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;task2 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;lt;-&lt;&#x2F;span&gt;&lt;span&gt; maybeTask2
+&lt;&#x2F;span&gt;&lt;span&gt;  } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;yield&lt;&#x2F;span&gt;&lt;span&gt; task1.duration + task2.duration
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ce qu&#x27;on voit ici est qu&#x27;il est impossible d&#x27;accéder à l&#x27;objet qui nous intéresse, &lt;code&gt;task&lt;&#x2F;code&gt;, sans passer par les deux monades &lt;code&gt;Future&lt;&#x2F;code&gt; et &lt;code&gt;Option&lt;&#x2F;code&gt;.
+Ca n&#x27;a pas l&#x27;air trop gênant lorsqu&#x27;on manipule une seule instance de ce type, mais dès qu&#x27;on en a plusieurs, notre code grossit.&lt;&#x2F;p&gt;
+&lt;p&gt;Les transformeurs de monade ont justement pour but de pouvoir nous faire accéder à l&#x27;objet qui nous intéresse en une seule fois.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;l-entree-en-jeu-des-transformeurs-de-monades&quot;&gt;L&#x27;entrée en jeu des transformeurs de monades&lt;&#x2F;h2&gt;
+&lt;p&gt;(J&#x27;utiliserai la librairie &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;scalaz&#x2F;scalaz&quot;&gt;Scalaz&lt;&#x2F;a&gt;{:target=&amp;quot;_blank&amp;quot;} pour les exemples suivant, elle n&#x27;est pas la seule à proposer des transformeurs de monades.)&lt;&#x2F;p&gt;
+&lt;p&gt;Les transformeurs de monades sont choisis en fonction de la structure monadique intérieure.
+Dans notre exemple, &lt;code&gt;Future[Option[Task]]&lt;&#x2F;code&gt;, il s&#x27;agit d&#x27;&lt;code&gt;Option[Task]&lt;&#x2F;code&gt;.
+Nous allons donc choisir le transformeur &lt;code&gt;scalaz.OptionT&lt;&#x2F;code&gt;, avec T pour Transformer, qui a une fonction faite pour nous:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scala&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-scala &quot;&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;apply&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;A&lt;&#x2F;span&gt;&lt;span&gt;](&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;M&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;Option&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;A&lt;&#x2F;span&gt;&lt;span&gt;]]) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;OptionT&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;M&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;A&lt;&#x2F;span&gt;&lt;span&gt;](a)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;On va donc pouvoir appliquer cette fonction &lt;code&gt;apply&lt;&#x2F;code&gt; à notre double structure monadique pour la transformer en une structure simple.&lt;&#x2F;p&gt;
+&lt;p&gt;D&#x27;où ensuite ce code bien plus simple:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scala&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-scala &quot;&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0184bc;&quot;&gt;sumTwoTasksDurations&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;id1&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Long&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;id2&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Long&lt;&#x2F;span&gt;&lt;span&gt;): &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;OptionT&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;Future&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;= for &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;task1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;lt;- &lt;&#x2F;span&gt;&lt;span&gt;OptionT(todolistDAO.get(id1))
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;task2 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;&amp;lt;- &lt;&#x2F;span&gt;&lt;span&gt;OptionT(todolistDAO.get(id2))
+&lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;yield&lt;&#x2F;span&gt;&lt;span&gt; task1.duration + task2.duration
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Le type de retour est aussi un &lt;code&gt;OptionT&lt;&#x2F;code&gt; ici, et je vais pouvoir le retransformer en les types que je sais maîtriser via la méthode &lt;code&gt;run&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scala&quot; style=&quot;background-color:#fafafa;color:#383a42;&quot; class=&quot;language-scala &quot;&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;val &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;durationT&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;OptionT&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;Future&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; displayTwoTasksInfo(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;val &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e45649;&quot;&gt;futureMaybeDuration&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;Future&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c18401;&quot;&gt;Option&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span&gt;]] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a626a4;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; durationT.run
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;Les transformeurs de monades proposent une abstraction puissante pour travailler sur objets contenus dans des monades elles même contenues dans une première monade.
+Ils permettent de réduire la complexité du code et améliorent la lisibilité du code en faisant tout le branchement nécessaire pour récupérer la donnée intéressante.
+SCalaz est une des librairies proposant des transformeurs de monades, mais il en existe d&#x27;autre, et il est aussi possible de créer les siens.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;scalaz&#x2F;scalaz&quot;&gt;La librairie Scalaz&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;eed3si9n.com&#x2F;herding-cats&#x2F;stacking-future-and-either.html&quot;&gt;Stacking Future and Either by eed3si9n&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+</feed>

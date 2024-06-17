@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    
+        <title>
+             Les transformeurs de monades
+            
+        </title>
+
+        
+            <meta property="og:title" content="Les transformeurs de monades" />
+        
+    
+
+    
+        
+            <meta property="og:description" content="Les transformeurs de monades (monad transformers en anglais) sont des objets provenant de la programmation fonctionnelle." />
+        
+    
+
+    
+        
+            <meta name="description" content="Les transformeurs de monades (monad transformers en anglais) sont des objets provenant de la programmation fonctionnelle." />
+        
+    
+
+    
+         <link rel="icon" type="image/png" href=&#x2F;icon&#x2F;favicon.png />
+    
+
+    
+
+    
+
+    
+    
+        <script src=//giovannini.github.io/js/feather.min.js></script>
+    
+
+
+    
+        <link href=//giovannini.github.io/css/fonts.css rel="stylesheet" />
+    
+
+    <link rel="stylesheet" type="text/css" media="screen" href=//giovannini.github.io/css/main.css />
+
+    
+        <link
+            rel="stylesheet"
+            id="darkModeStyle"
+            type="text/css"
+            href=//giovannini.github.io/css/dark.css
+            
+            
+                disabled
+            
+        />
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    
+
+
+    
+
+
+</head>
+
+
+<body>
+    <div class="content">
+        <header>
+    <div class="main" id="main_title">
+        <a href=&#x2F;&#x2F;giovannini.github.io>Notes de Thomas</a>
+    </div>
+
+    <nav>
+        
+            <a href=&#x2F;notes>Notes</a>
+        
+            <a href=&#x2F;about>À propos</a>
+        
+            <a href=&#x2F;tags>Tags</a>
+        
+
+        
+            | <a id="dark-mode-toggle" onclick="toggleTheme()" href=""></a>
+            <script src=//giovannini.github.io/js/themetoggle.js></script>
+        
+    </nav>
+</header>
+
+
+        
+    
+<main>
+    <article>
+        <div class="title">
+            <h1 class="title">Les transformeurs de monades</h1>
+            <div class="meta">
+                
+                le  2016-10-09
+
+                
+            </div>
+        </div>
+
+        
+
+        <section class="body">
+            <p>Les transformeurs de monades (monad transformers en anglais) sont des objets provenant de la programmation fonctionnelle.
+Il s'agit de types monadiques dont le but est d'abstraire une monade enveloppant une seconde monade.
+Nous allons voir qu'il s'agit d'un motif que nous retrouvons assez souvent dans notre code Scala et en quoi les transformeurs de monades sont une abstraction très pratique pour ce genre de cas.</p>
+<h2 id="les-cas-d-utilisation">Les cas d'utilisation</h2>
+<p>Je viens de créer une superbe base de données qui va me permettre de gérer ma todolist d'une manière révolutionnaire.
+J'ai plusieurs méthodes sur cette base, notamment <code>def get(id: Long): Future[Option[Task]]</code> qui me permet de récupérer une tâche de ma todolist via son ID.
+Ici, j'utilise le type <code>Future</code> parce que je souhaite effectuer des transactions asynchrones avec ma base.
+De plus, j'utilise le type <code>Option</code> puisqu'en réalité, je ne sais pas si à l'ID que je donne en paramètre correspond vraiment une tâche.
+Top.
+Donc maintenant, je peux sereinement récupérer mes tâches une par une.</p>
+<pre data-lang="scala" style="background-color:#fafafa;color:#383a42;" class="language-scala "><code class="language-scala" data-lang="scala"><span style="color:#a626a4;">def </span><span style="color:#0184bc;">getTaskInfo</span><span>(</span><span style="color:#e45649;">id</span><span>: </span><span style="color:#a626a4;">Long</span><span>) </span><span style="color:#a626a4;">= </span><span>{
+</span><span>  </span><span style="color:#a0a1a7;">// Récupération de ma tâche et opération sur le contenu du Future
+</span><span>  todolistDAO.get(id).map {
+</span><span>    </span><span style="color:#a626a4;">case </span><span>None </span><span style="color:#a626a4;">=&gt;</span><span> println(</span><span style="color:#50a14f;">&quot;Pas de tâche&quot;</span><span>)
+</span><span>    </span><span style="color:#a626a4;">case </span><span>Some(</span><span style="color:#e45649;">task</span><span>) </span><span style="color:#a626a4;">=&gt;</span><span> println(task)
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p>Mais ma todolist est révolutionnaire et elle peut faire bien plus que ça.
+En vrai, j'ai aussi une autre méthode <code>def sumTwoTasksDurations(id1: Long, id2: Long)</code>.
+Je vais devoir faire deux appels à ma méthode <code>get</code>, j'aurais deux <code>Future</code>s.
+Comme ils ont une structure monadique, je vais pouvoir utiliser une for comprehension:</p>
+<pre data-lang="scala" style="background-color:#fafafa;color:#383a42;" class="language-scala "><code class="language-scala" data-lang="scala"><span style="color:#a626a4;">def </span><span style="color:#0184bc;">sumTwoTasksDurations</span><span>(</span><span style="color:#e45649;">id1</span><span>: </span><span style="color:#a626a4;">Long</span><span>, </span><span style="color:#e45649;">id2</span><span>: </span><span style="color:#a626a4;">Long</span><span>) </span><span style="color:#a626a4;">= for </span><span>{
+</span><span>  </span><span style="color:#e45649;">maybeTask1 </span><span style="color:#a626a4;">&lt;-</span><span> todolistDAO.get(id1)
+</span><span>  </span><span style="color:#e45649;">maybeTask2 </span><span style="color:#a626a4;">&lt;-</span><span> todolistDAO.get(id2)
+</span><span>} </span><span style="color:#a626a4;">yield </span><span>{
+</span><span>  ...
+</span><span>}
+</span></code></pre>
+<p>Dans mon <code>yield</code>, je vais devoir traiter deux <code>Option</code>s:</p>
+<ul>
+<li>Si elles sont toutes les deux à <code>Some</code>, je les affiche</li>
+<li>Sinon, je n'affiche rien</li>
+</ul>
+<p>Comme <code>Option</code> possède aussi une structure monadique, je peux aussi utiliser une for comprehension:</p>
+<pre data-lang="scala" style="background-color:#fafafa;color:#383a42;" class="language-scala "><code class="language-scala" data-lang="scala"><span style="color:#a626a4;">def </span><span style="color:#0184bc;">sumTwoTasksDurations</span><span>(</span><span style="color:#e45649;">id1</span><span>: </span><span style="color:#a626a4;">Long</span><span>, </span><span style="color:#e45649;">id2</span><span>: </span><span style="color:#a626a4;">Long</span><span>) </span><span style="color:#a626a4;">= for </span><span>{
+</span><span>  </span><span style="color:#e45649;">maybeTask1 </span><span style="color:#a626a4;">&lt;-</span><span> todolistDAO.get(id1)
+</span><span>  </span><span style="color:#e45649;">maybeTask2 </span><span style="color:#a626a4;">&lt;-</span><span> todolistDAO.get(id2)
+</span><span>} </span><span style="color:#a626a4;">yield </span><span>{
+</span><span>  </span><span style="color:#a626a4;">for </span><span>{
+</span><span>    </span><span style="color:#e45649;">task1 </span><span style="color:#a626a4;">&lt;-</span><span> maybeTask1
+</span><span>    </span><span style="color:#e45649;">task2 </span><span style="color:#a626a4;">&lt;-</span><span> maybeTask2
+</span><span>  } </span><span style="color:#a626a4;">yield</span><span> task1.duration + task2.duration
+</span><span>}
+</span></code></pre>
+<p>Ce qu'on voit ici est qu'il est impossible d'accéder à l'objet qui nous intéresse, <code>task</code>, sans passer par les deux monades <code>Future</code> et <code>Option</code>.
+Ca n'a pas l'air trop gênant lorsqu'on manipule une seule instance de ce type, mais dès qu'on en a plusieurs, notre code grossit.</p>
+<p>Les transformeurs de monade ont justement pour but de pouvoir nous faire accéder à l'objet qui nous intéresse en une seule fois.</p>
+<h2 id="l-entree-en-jeu-des-transformeurs-de-monades">L'entrée en jeu des transformeurs de monades</h2>
+<p>(J'utiliserai la librairie <a href="https://github.com/scalaz/scalaz">Scalaz</a>{:target=&quot;_blank&quot;} pour les exemples suivant, elle n'est pas la seule à proposer des transformeurs de monades.)</p>
+<p>Les transformeurs de monades sont choisis en fonction de la structure monadique intérieure.
+Dans notre exemple, <code>Future[Option[Task]]</code>, il s'agit d'<code>Option[Task]</code>.
+Nous allons donc choisir le transformeur <code>scalaz.OptionT</code>, avec T pour Transformer, qui a une fonction faite pour nous:</p>
+<pre data-lang="scala" style="background-color:#fafafa;color:#383a42;" class="language-scala "><code class="language-scala" data-lang="scala"><span style="color:#a626a4;">def </span><span style="color:#0184bc;">apply</span><span>[</span><span style="color:#c18401;">A</span><span>](</span><span style="color:#e45649;">a</span><span>: </span><span style="color:#c18401;">M</span><span>[</span><span style="color:#c18401;">Option</span><span>[</span><span style="color:#c18401;">A</span><span>]]) </span><span style="color:#a626a4;">= new </span><span style="color:#c18401;">OptionT</span><span>[</span><span style="color:#c18401;">M</span><span>, </span><span style="color:#c18401;">A</span><span>](a)
+</span></code></pre>
+<p>On va donc pouvoir appliquer cette fonction <code>apply</code> à notre double structure monadique pour la transformer en une structure simple.</p>
+<p>D'où ensuite ce code bien plus simple:</p>
+<pre data-lang="scala" style="background-color:#fafafa;color:#383a42;" class="language-scala "><code class="language-scala" data-lang="scala"><span style="color:#a626a4;">def </span><span style="color:#0184bc;">sumTwoTasksDurations</span><span>(</span><span style="color:#e45649;">id1</span><span>: </span><span style="color:#a626a4;">Long</span><span>, </span><span style="color:#e45649;">id2</span><span>: </span><span style="color:#a626a4;">Long</span><span>): </span><span style="color:#c18401;">OptionT</span><span>[</span><span style="color:#c18401;">Future</span><span>, </span><span style="color:#a626a4;">Int</span><span>] </span><span style="color:#a626a4;">= for </span><span>{
+</span><span>  </span><span style="color:#e45649;">task1 </span><span style="color:#a626a4;">&lt;- </span><span>OptionT(todolistDAO.get(id1))
+</span><span>  </span><span style="color:#e45649;">task2 </span><span style="color:#a626a4;">&lt;- </span><span>OptionT(todolistDAO.get(id2))
+</span><span>} </span><span style="color:#a626a4;">yield</span><span> task1.duration + task2.duration
+</span></code></pre>
+<p>Le type de retour est aussi un <code>OptionT</code> ici, et je vais pouvoir le retransformer en les types que je sais maîtriser via la méthode <code>run</code>:</p>
+<pre data-lang="scala" style="background-color:#fafafa;color:#383a42;" class="language-scala "><code class="language-scala" data-lang="scala"><span style="color:#a626a4;">val </span><span style="color:#e45649;">durationT</span><span>: </span><span style="color:#c18401;">OptionT</span><span>[</span><span style="color:#c18401;">Future</span><span>, </span><span style="color:#a626a4;">Int</span><span>] </span><span style="color:#a626a4;">=</span><span> displayTwoTasksInfo(</span><span style="color:#c18401;">1</span><span>, </span><span style="color:#c18401;">2</span><span>)
+</span><span style="color:#a626a4;">val </span><span style="color:#e45649;">futureMaybeDuration</span><span>: </span><span style="color:#c18401;">Future</span><span>[</span><span style="color:#c18401;">Option</span><span>[</span><span style="color:#a626a4;">Int</span><span>]] </span><span style="color:#a626a4;">=</span><span> durationT.run
+</span></code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>Les transformeurs de monades proposent une abstraction puissante pour travailler sur objets contenus dans des monades elles même contenues dans une première monade.
+Ils permettent de réduire la complexité du code et améliorent la lisibilité du code en faisant tout le branchement nécessaire pour récupérer la donnée intéressante.
+SCalaz est une des librairies proposant des transformeurs de monades, mais il en existe d'autre, et il est aussi possible de créer les siens.</p>
+<ul>
+<li><a href="https://github.com/scalaz/scalaz">La librairie Scalaz</a></li>
+<li><a href="http://eed3si9n.com/herding-cats/stacking-future-and-either.html">Stacking Future and Either by eed3si9n</a></li>
+</ul>
+
+        </section>
+
+        
+            <div class="post-tags">
+                <nav class="nav tags">
+                    
+                        <span><a href=//giovannini.github.io/tags/scala/>#scala</a></span>
+                    
+                        <span><a href=//giovannini.github.io/tags/monade/>#monade</a></span>
+                    
+                </nav>
+            </div>
+        
+
+    </article>
+</main>
+
+
+
+        <footer>
+  <div class="social">
+    
+        <a class="soc" href=https:&#x2F;&#x2F;github.com&#x2F;giovannini title=GitHub>
+            <i data-feather=github></i>
+        </a>
+        <hr/>
+    
+        <a class="soc" href=https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;giovanninithomas&#x2F; title=LinkedIn>
+            <i data-feather=linkedin></i>
+        </a>
+        <hr/>
+    
+  </div>
+  <div class="footer-info">
+    2024 © Thomas
+  </div>
+</footer>
+
+
+<script>
+    feather.replace();
+</script>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    
+        <title>
+             Les booléens
+            
+        </title>
+
+        
+            <meta property="og:title" content="Les booléens" />
+        
+    
+
+    
+        
+            <meta property="og:description" content="Les booléens sont un type de donnée que l&#x27;on retrouve dans tout projet informatique. Ils sont utilisés pour exprimer des conditions logiques, parfois notamment relativement à des itérations." />
+        
+    
+
+    
+        
+            <meta name="description" content="Les booléens sont un type de donnée que l&#x27;on retrouve dans tout projet informatique. Ils sont utilisés pour exprimer des conditions logiques, parfois notamment relativement à des itérations." />
+        
+    
+
+    
+         <link rel="icon" type="image/png" href=&#x2F;icon&#x2F;favicon.png />
+    
+
+    
+
+    
+
+    
+    
+        <script src=//giovannini.github.io/js/feather.min.js></script>
+    
+
+
+    
+        <link href=//giovannini.github.io/css/fonts.css rel="stylesheet" />
+    
+
+    <link rel="stylesheet" type="text/css" media="screen" href=//giovannini.github.io/css/main.css />
+
+    
+        <link
+            rel="stylesheet"
+            id="darkModeStyle"
+            type="text/css"
+            href=//giovannini.github.io/css/dark.css
+            
+            
+                disabled
+            
+        />
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    
+
+
+    
+
+
+</head>
+
+
+<body>
+    <div class="content">
+        <header>
+    <div class="main" id="main_title">
+        <a href=&#x2F;&#x2F;giovannini.github.io>Notes de Thomas</a>
+    </div>
+
+    <nav>
+        
+            <a href=&#x2F;notes>Notes</a>
+        
+            <a href=&#x2F;about>À propos</a>
+        
+            <a href=&#x2F;tags>Tags</a>
+        
+
+        
+            | <a id="dark-mode-toggle" onclick="toggleTheme()" href=""></a>
+            <script src=//giovannini.github.io/js/themetoggle.js></script>
+        
+    </nav>
+</header>
+
+
+        
+    
+<main>
+    <article>
+        <div class="title">
+            <h1 class="title">Les booléens</h1>
+            <div class="meta">
+                
+                le  2019-04-13
+
+                
+            </div>
+        </div>
+
+        
+
+        <section class="body">
+            <p>Les booléens sont un type de donnée que l'on retrouve dans tout projet informatique. Ils sont utilisés pour exprimer des conditions logiques, parfois notamment relativement à des itérations.</p>
+<p>Malgré leur fréquence, je suis étonné de revoir les mêmes questions et les mêmes problèmes relatifs à la logique qu'ils génèrent. Comment combiner des booléens pour assurer que la condition logique que je souhaite est correcte, comment éviter de me répéter avec des booléens ? Quels sont les pratiques recommandées lors de l'utilisations de booléens. Voici ce que je vais décrire dans cet article.</p>
+<p>Les booléens sont généralement intégrés nativement dans le langage de programmation que l'on utilise. Je vais supposer que vous utilisez un langage qui permet d'appliquer des opérations basiques sur un booléen (ET, NON, OU ainsi que les opérations d'égalité), et vais utiliser Typescript comme langage pour coder, même si ces principes sont applicables à presque tout langage.</p>
+<h1 id="l-algebre-de-boole">L'algèbre de Boole</h1>
+<p>Le type de données Booléen est nommé d'après <a href="https://en.wikipedia.org/wiki/George_Boole">Georges Boole</a>, qui a été le premier à définir un système de logique algébrique au XIXe siècle.</p>
+<p>Dans un langage de programmation, une variable de type booléenne peut avoir 2 valeurs différentes: <code>true</code> et <code>false</code> (ou 1 et 0).</p>
+<h2 id="operations-basiques">Opérations basiques</h2>
+<p>L'algèbre de Boole définie 3 opérations majeures applicables aux booléens.</p>
+<ul>
+<li><strong>L'opération ET</strong> (AND) permet de conjuguer deux booléens. Pour deux booléens A et B, l'opération ET satisfait <code>A ET B vaut true</code> si <code>A vaut true</code> et <code>B vaut true</code> et satisfait <code>A ET B vaut false</code> dans les autres cas.</li>
+<li><strong>L'opération OU</strong> (OR) permet de disjoindre deux booléens. Pour deux booléens A et B, l'opération OU satisfait <code>A OU B vaut true</code> si <code>A vaut true</code> ou <code>B vaut true</code> et satisfait <code>A OU B vaut false</code> dans les autres cas.</li>
+<li><strong>L'opération NON</strong> (NOT) est une opération de négation et permet d'obtenir la valeur opposée d'un booléen. Pour un booléen A, l'opération NON satisfait <code>NON A vaut true</code> si <code>A vaut false</code> et satisfait <code>NON A vaut false</code> si <code>A vaut true</code>.</li>
+</ul>
+<p>Plutôt que de longues phrases, on résume les opérations possibles sur des booléens dans des tables qu'on appelle <strong>table de vérité</strong>:</p>
+<table><thead><tr><th>A</th><th>B</th><th>A ET B</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+<p>Dans les premières colonnes, on trouve les variables que l'on considère et leur valeur (0 et 1 plutôt que false et true puisque c'est plus rapide à écrire). Dans les dernières colonnes les résultats aux opérations que l'on souhaite effectuer.</p>
+<p>Dans cette table, 0 ET 1 vaut 0, car comme décrit au dessus</p>
+<blockquote>
+<p>l'opération ET satisfait <code>A ET B vaut true</code> si <code>A vaut true</code> et <code>B vaut true</code> et satisfait <code>A ET B vaut false</code> dans les autres cas</p>
+</blockquote>
+<p>Ici, faux et vrai vaut donc bien faux.</p>
+<p>Les tables de vérité des deux autres opérations sont les suivantes:</p>
+<table><thead><tr><th>A</th><th>B</th><th>A OU B</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+<table><thead><tr><th>A</th><th>NON A</th></tr></thead><tbody>
+<tr><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td></tr>
+</tbody></table>
+<p>Dans les langages de programmation, ces opérations se définissent généralement avec les fonctions <code>&amp;&amp;</code>, <code>||</code> et <code>!</code>:</p>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a626a4;">const </span><span style="color:#0184bc;">and </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean, </span><span style="color:#e45649;">b</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt; </span><span style="color:#e45649;">a </span><span style="color:#a626a4;">&amp;&amp; </span><span style="color:#e45649;">b
+</span><span style="color:#a626a4;">const </span><span style="color:#0184bc;">or </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean, </span><span style="color:#e45649;">b</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt; </span><span style="color:#e45649;">a </span><span style="color:#a626a4;">|| </span><span style="color:#e45649;">b
+</span><span style="color:#a626a4;">const </span><span style="color:#0184bc;">not </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt; !</span><span style="color:#e45649;">a
+</span></code></pre>
+<h2 id="combinaisons-d-operations-basiques">Combinaisons d'opérations basiques</h2>
+<p>En combinant des opérations basiques, il est possible d'arriver à des opérations courantes:</p>
+<ul>
+<li><strong>L'implication.</strong> Dans l'opération A implique B, si A est vrai, alors la valeur de B est prise. Si A est faux, alors la valeur de B peut être ignorée; puisqu'on retourne forcément une valeur booléenne, l'opération est vraie lorsque A est faux.</li>
+</ul>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a626a4;">const </span><span style="color:#0184bc;">imply </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean, </span><span style="color:#e45649;">b</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt; !</span><span style="color:#e45649;">a </span><span style="color:#a626a4;">|| </span><span style="color:#e45649;">b
+</span></code></pre>
+<ul>
+<li><strong>La différence.</strong> Cette opération est aussi appelée XOR, ou OU exclusif. Elle est vraie lorsque deux variables sont différentes.</li>
+</ul>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a626a4;">const </span><span style="color:#0184bc;">xor </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean, </span><span style="color:#e45649;">b</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt; </span><span>(</span><span style="color:#e45649;">a </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">b</span><span>) </span><span style="color:#a626a4;">|| </span><span>(</span><span style="color:#e45649;">b </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">a</span><span>)
+</span></code></pre>
+<ul>
+<li><strong>L'égalité, ou équivalence.</strong> L'opération est vraie lorsque les deux variables ont la même valeur.</li>
+</ul>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a626a4;">const </span><span style="color:#0184bc;">equivalence </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean, </span><span style="color:#e45649;">b</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt; !</span><span style="color:#0184bc;">xor</span><span>(</span><span style="color:#e45649;">a</span><span>, </span><span style="color:#e45649;">b</span><span>)
+</span><span style="color:#a0a1a7;">// OR
+</span><span style="color:#a626a4;">const </span><span style="color:#0184bc;">equivalence </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean, </span><span style="color:#e45649;">b</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt;
+</span><span>  (</span><span style="color:#e45649;">a </span><span style="color:#a626a4;">&amp;&amp; </span><span style="color:#e45649;">b</span><span>) </span><span style="color:#a626a4;">|| </span><span>(</span><span style="color:#a626a4;">!</span><span style="color:#e45649;">a </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">b</span><span>)
+</span></code></pre>
+<p>Il est aussi possible de créer des tables de vérité pour ces différentes propositions.</p>
+<h2 id="utilisation-des-tables-de-verite">Utilisation des tables de vérité</h2>
+<p>Les tables de vérité sont très utiles pour se rendre compte de l'opération que l'on souhaite utiliser, mais aussi des équivalences logiques.</p>
+<p>Prenons la table suivante:</p>
+<table><thead><tr><th>A</th><th>B</th><th>Result</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>0</td></tr>
+</tbody></table>
+<p>Une des manière les plus simples de savoir de quelle proposition nous avons besoin est de traiter toutes les lignes qui résultent en 1 comme des opérations ET et les associer via l'opération OU.</p>
+<p>Nous considérons ici les lignes 2 et 3.</p>
+<pre style="background-color:#fafafa;color:#383a42;"><code><span>Result vaut
+</span><span>  (A est faux ET B est vrai) OU
+</span><span>  (A est vrai ET B est faux)
+</span></code></pre>
+<p>Ou en algèbre de Boole</p>
+<pre style="background-color:#fafafa;color:#383a42;"><code><span>Result vaut (NON A ET B) OU (A ET NON B)
+</span></code></pre>
+<p>La porte logique est celle du OU exclusif et nous retombons bien sur notre définition précédente.</p>
+<p>Evidemment, si toutes les lignes ont le même résultat, c'est que l'on n'a pas besoin de condition: la valeur est la même indépendamment des variables que l'on fait rentrer dans la table.</p>
+<p>Pour des tables avec plus de la moitié des lignes valant 1, il est possible de se simplifier le travail.</p>
+<table><thead><tr><th>A</th><th>B</th><th>Result</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>0</td></tr>
+</tbody></table>
+<pre style="background-color:#fafafa;color:#383a42;"><code><span>Result vaut
+</span><span>  (NON A ET NON B) OU
+</span><span>  (NON A ET B) OU
+</span><span>  (A ET NON B)
+</span></code></pre>
+<p>On peut considérer les points communs entre les lignes. Par exemple, dans tous les cas où A vaut 0, le Result vaut 1. En associant ce constat avec la dernière ligne, il est possible de simplifier notre expression</p>
+<pre style="background-color:#fafafa;color:#383a42;"><code><span>Result vaut (NON A) OU (A ET NON B)
+</span></code></pre>
+<p>Une dernière façon (pour cet article en tout cas) de lire ces tables, et qui est surtout utile lorsque plus de la moitié des lignes du résultat sont des 1 est d'en inverser le résultat.</p>
+<table><thead><tr><th>A</th><th>B</th><th>Result</th><th>NON Result</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+</tbody></table>
+<p>Il est donc possible d'écrire la proposition sous une autre forme.</p>
+<pre style="background-color:#fafafa;color:#383a42;"><code><span>NON Result vaut A ET B
+</span><span>Result vaut NON(A ET B)
+</span></code></pre>
+<p>Lorsque ces tables ne considèrent qu'une seule variable, deux lignes sont nécessaires. Lorsqu'elle en considère 2, 4 lignes sont nécessaires. 8 lignes sont nécessaires pour 3 variables. Il faut 2^n lignes pour n variables. Ce nombre grossit exponentiellement, et c'est pourquoi il est nécessaire de modérer le nombre de propositions que l'on souhaite traiter en même temps. Je ne recommande pas d'utiliser cette méthode pour plus de 3 variables.</p>
+<p>Concrètement, il est possible en partant d'une table de vérité, de trouver la liaison logique nécessaire entre plusieurs variables mais aussi les équivalences logiques.</p>
+<p>Par exemple, il est possible grâce aux tables de vérité de démonter que l'implication</p>
+<p>Beaucoup d'autres méthodes existent, il s'agit de celle avec laquelle j'ai le plus d'affinité. Il existe plusieurs motifs que l'on peut notamment retrouver dans une table de vérité et je vais tenter de vous les montrer</p>
+<h1 id="du-code">Du code</h1>
+<p>Grâce à ces principes génériques sur l'algèbre de Boole, il nous est possible de mettre en place plus facilement nos conditions logiques au sein de notre application, mais aussi de les combiner.</p>
+<p>&quot;Je souhaite afficher mon bouton de promotion quand mon utilisateur est connecté <strong>et</strong> que nous sommes le jour de Noël.&quot;</p>
+<p>La spécification métier nous permet de savoir rapidement quelle opération logique utiliser.</p>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a626a4;">const </span><span style="color:#0184bc;">shouldDisplayButton </span><span style="color:#a626a4;">= </span><span>(
+</span><span>  </span><span style="color:#e45649;">isUserConnected</span><span style="color:#a626a4;">: </span><span>boolean,
+</span><span>  </span><span style="color:#e45649;">isTodayChristmas</span><span style="color:#a626a4;">: </span><span>boolean
+</span><span>) </span><span style="color:#a626a4;">=&gt; </span><span style="color:#e45649;">isUserConnected </span><span style="color:#a626a4;">&amp;&amp; </span><span style="color:#e45649;">isTodayChristmas
+</span></code></pre>
+<p>&quot;On peut commander une salade <strong>ou</strong> un sandwich dans ce menu.&quot;</p>
+<p>Ici, la spécification porte à confusion, puisque cette phrase porte plutôt la sémantique d'un ou exclusif. Pour la reformuler logiquement:</p>
+<p>&quot;Dans ce menu, on peut prendre soit une salade, soit un sandwich.&quot;</p>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a626a4;">const </span><span style="color:#0184bc;">isValidMenu </span><span style="color:#a626a4;">= </span><span>(
+</span><span>  </span><span style="color:#e45649;">hasASalad</span><span style="color:#a626a4;">: </span><span>boolean,
+</span><span>  </span><span style="color:#e45649;">hasASandwich</span><span style="color:#a626a4;">: </span><span>boolean
+</span><span>) </span><span style="color:#a626a4;">=&gt; </span><span style="color:#a0a1a7;">// xor(hasASalad, hasASandwich)
+</span><span>  (</span><span style="color:#e45649;">hasASalad </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">hasASandwich</span><span>) </span><span style="color:#a626a4;">|| </span><span>(</span><span style="color:#e45649;">hasASandwich </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">hasASalad</span><span>)
+</span></code></pre>
+<h2 id="les-bonnes-pratiques">Les bonnes pratiques</h2>
+<p>On retrouve de nombreuses bonnes pratiques associées aux booléens, en voici certaines qui sont bien entendu des propositions et non des vérités absolues.</p>
+<h3 id="conventions-de-nommage">Conventions de nommage</h3>
+<p>Il est recommandé de toujours nommer ses booléens avec les assertions &quot;est&quot; ou &quot;a&quot;:</p>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a626a4;">const </span><span style="color:#e45649;">isUserConnected</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">= </span><span style="color:#a0a1a7;">// ...
+</span><span style="color:#a626a4;">const </span><span style="color:#e45649;">hasASandwich</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">= </span><span style="color:#a0a1a7;">// ...
+</span><span style="color:#a626a4;">const </span><span style="color:#e45649;">areDisplayed</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">= </span><span style="color:#a0a1a7;">// ...
+</span></code></pre>
+<h3 id="separer-les-operations-complexes-par-des-parentheses">Séparer les opérations complexes par des parenthèses</h3>
+<p>Les opérations entre booléen, comme pour les entiers, suivent des ordre de priorité. De même que la multiplication est prioritaire sur l'addition, l'opération ET est généralement prioritaire sur l'opération OU. Mettre des parenthèses entre différentes opérations permet de simplifier la lecture et la compréhension de la logique de l'opération.</p>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a0a1a7;">// Bad
+</span><span style="color:#a626a4;">const </span><span style="color:#0184bc;">xor </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean, </span><span style="color:#e45649;">b</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt; </span><span style="color:#e45649;">a </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">b </span><span style="color:#a626a4;">|| </span><span style="color:#e45649;">b </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">a
+</span><span>
+</span><span style="color:#a0a1a7;">// Good
+</span><span style="color:#a626a4;">const </span><span style="color:#0184bc;">xor </span><span style="color:#a626a4;">= </span><span>(</span><span style="color:#e45649;">a</span><span style="color:#a626a4;">: </span><span>boolean, </span><span style="color:#e45649;">b</span><span style="color:#a626a4;">: </span><span>boolean) </span><span style="color:#a626a4;">=&gt;
+</span><span>  (</span><span style="color:#e45649;">a </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">b</span><span>) </span><span style="color:#a626a4;">|| </span><span>(</span><span style="color:#e45649;">b </span><span style="color:#a626a4;">&amp;&amp; !</span><span style="color:#e45649;">a</span><span>)
+</span></code></pre>
+<h3 id="eviter-de-passer-un-booleen-en-parametre-d-une-fonction"><a href="https://github.com/labs42io/clean-code-typescript#dont-use-flags-as-function-parameters">Eviter de passer un booléen en paramètre d'une fonction</a></h3>
+<p>Passer un booléen en fonction indique que la fonction fait plusieurs choses à la fois. Mieux vaut découper cette fonction en deux fonctions distinctes que de passer un argument drapeau (flag argument)</p>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a0a1a7;">// Bad
+</span><span style="color:#a626a4;">function </span><span style="color:#0184bc;">createFile</span><span>(</span><span style="color:#e45649;">name</span><span style="color:#a626a4;">: </span><span>string, </span><span style="color:#e45649;">temp</span><span style="color:#a626a4;">: </span><span>boolean) {
+</span><span>  </span><span style="color:#a626a4;">if </span><span>(</span><span style="color:#e45649;">temp</span><span>) {
+</span><span>    </span><span style="color:#e45649;">fs</span><span>.</span><span style="color:#0184bc;">create</span><span>(</span><span style="color:#50a14f;">`./temp/${</span><span style="color:#e45649;">name</span><span style="color:#50a14f;">}`</span><span>);
+</span><span>  } </span><span style="color:#a626a4;">else </span><span>{
+</span><span>    </span><span style="color:#e45649;">fs</span><span>.</span><span style="color:#0184bc;">create</span><span>(</span><span style="color:#e45649;">name</span><span>);
+</span><span>  }
+</span><span>}
+</span><span>
+</span><span style="color:#a0a1a7;">// Good
+</span><span style="color:#a626a4;">function </span><span style="color:#0184bc;">createTempFile</span><span>(</span><span style="color:#e45649;">name</span><span style="color:#a626a4;">: </span><span>string) {
+</span><span>  </span><span style="color:#0184bc;">createFile</span><span>(</span><span style="color:#50a14f;">`./temp/${</span><span style="color:#e45649;">name</span><span style="color:#50a14f;">}`</span><span>);
+</span><span>}
+</span><span>
+</span><span style="color:#a626a4;">function </span><span style="color:#0184bc;">createFile</span><span>(</span><span style="color:#e45649;">name</span><span style="color:#a626a4;">: </span><span>string) {
+</span><span>  </span><span style="color:#e45649;">fs</span><span>.</span><span style="color:#0184bc;">create</span><span>(</span><span style="color:#e45649;">name</span><span>);
+</span><span>}
+</span></code></pre>
+<h3 id="eviter-les-noms-negatifs"><a href="https://github.com/labs42io/clean-code-typescript#avoid-negative-conditionals">Eviter les noms négatifs</a></h3>
+<p>Les doubles négatifs sont plus complexes à comprendre que les positifs. Les noms de booléens négatifs entraînent ainsi une charge mentale supplémentaire: les noms positifs sont à préférer.</p>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a0a1a7;">// Bad
+</span><span style="color:#a626a4;">const </span><span style="color:#e45649;">isEmailNotUsed</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">= </span><span style="color:#a0a1a7;">// ...
+</span><span>
+</span><span style="color:#a626a4;">if </span><span>(</span><span style="color:#0184bc;">isEmailNotUsed</span><span>(</span><span style="color:#e45649;">email</span><span>)) {
+</span><span>  </span><span style="color:#a0a1a7;">// ...
+</span><span>}
+</span><span>
+</span><span style="color:#a0a1a7;">// Good
+</span><span style="color:#a626a4;">const </span><span style="color:#e45649;">isEmailUsed</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">= </span><span style="color:#a0a1a7;">// ...
+</span><span>
+</span><span style="color:#a626a4;">if </span><span>(</span><span style="color:#a626a4;">!</span><span style="color:#0184bc;">isEmailUsed</span><span>(</span><span style="color:#e45649;">node</span><span>)) {
+</span><span>  </span><span style="color:#a0a1a7;">// ...
+</span><span>}
+</span></code></pre>
+<h3 id="tautologie">Tautologie</h3>
+<p>Une tautologie est une façon d'exprimer deux fois la même chose de façon différente. Ses formes les plus courantes dans du code sont les suivantes:</p>
+<pre data-lang="typescript" style="background-color:#fafafa;color:#383a42;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span style="color:#a0a1a7;">// Bad
+</span><span style="color:#a626a4;">const </span><span style="color:#e45649;">isEmailEmpty</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">=
+</span><span>  </span><span style="color:#e45649;">email</span><span>.</span><span style="color:#e45649;">isEmpty </span><span style="color:#a626a4;">? </span><span style="color:#c18401;">true </span><span style="color:#a626a4;">: </span><span style="color:#c18401;">false
+</span><span style="color:#a626a4;">const </span><span style="color:#e45649;">isFieldDefined</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">=
+</span><span>  </span><span style="color:#e45649;">field </span><span style="color:#a626a4;">=== </span><span style="color:#c18401;">undefined </span><span style="color:#a626a4;">? </span><span style="color:#c18401;">false </span><span style="color:#a626a4;">: </span><span style="color:#c18401;">true
+</span><span>
+</span><span style="color:#a0a1a7;">// Good
+</span><span style="color:#a626a4;">const </span><span style="color:#e45649;">isEmailEmpty</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">=
+</span><span>  </span><span style="color:#e45649;">email</span><span>.</span><span style="color:#e45649;">isEmpty
+</span><span style="color:#a626a4;">const </span><span style="color:#e45649;">isFieldDefined</span><span style="color:#a626a4;">: </span><span>boolean </span><span style="color:#a626a4;">=
+</span><span>  </span><span style="color:#e45649;">field </span><span style="color:#a626a4;">!== </span><span style="color:#c18401;">undefined
+</span></code></pre>
+
+        </section>
+
+        
+            <div class="post-tags">
+                <nav class="nav tags">
+                    
+                        <span><a href=//giovannini.github.io/tags/basiques/>#basiques</a></span>
+                    
+                </nav>
+            </div>
+        
+
+    </article>
+</main>
+
+
+
+        <footer>
+  <div class="social">
+    
+        <a class="soc" href=https:&#x2F;&#x2F;github.com&#x2F;giovannini title=GitHub>
+            <i data-feather=github></i>
+        </a>
+        <hr/>
+    
+        <a class="soc" href=https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;giovanninithomas&#x2F; title=LinkedIn>
+            <i data-feather=linkedin></i>
+        </a>
+        <hr/>
+    
+  </div>
+  <div class="footer-info">
+    2024 © Thomas
+  </div>
+</footer>
+
+
+<script>
+    feather.replace();
+</script>
+
+
+    </div>
+</body>
+
+</html>
